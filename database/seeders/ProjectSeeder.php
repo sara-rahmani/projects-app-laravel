@@ -78,6 +78,17 @@ class ProjectSeeder extends Seeder
             'slug' => Str::slug('Industry Project', '-')
 
         ]);
+        Project::create([
+            'title' => 'Dice Game',
+            'excerpt' => fake()->sentences(2, true),
+            'body' => $this->fakeHTMLParagraphs(6),
+            'category_id' => 3,
+            'slug' => Str::slug('Dice Game', '-'),
+             'thumb'=> 'images/dice5.png',
+             'image'=> 'images/Screen Shot 2023-03-11 at 1.22.21 PM.png',
+             'published_date' => '2023-03-15'
+
+        ]);
     }
     protected function fakeHTMLParagraphs($count = 3) {
         $bodyArray = fake()->paragraphs($count);

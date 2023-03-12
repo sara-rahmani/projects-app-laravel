@@ -16,5 +16,7 @@ class ProjectsTagsSeeder extends Seeder
          // Explicitly attach tags to projects
          $portfolioProject = Project::find(1);
          $portfolioProject->tags()->attach([1,2,3]);
+         $portfolioProject = Project::find(9);
+         $portfolioProject->tags()->attach([3,4,5]);
     }
 }
