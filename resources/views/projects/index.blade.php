@@ -7,7 +7,7 @@
                         <h2 class="text-2xl font-semibold text-gray-800 dark:text-white mr-2 text-center">{{ $category->name }} Projects</h2>
                     </div>
 @endif -->
-        <div class="relative flex justify-center  bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
+        <div class="relative flex justify-center min-h-screen  bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
 
             <div class="mt-6 w-3/4 ">
                 @if (count($projects))

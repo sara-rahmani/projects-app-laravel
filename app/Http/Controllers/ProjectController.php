@@ -16,10 +16,15 @@ class ProjectController extends Controller
         $projects = Project::with(['category','tags'])->get();
         return response()->json($projects);
     }
+
+   
     public function summaries()
     {
+
         return view('home')
-        ->with('projects', Project::latest('published_date')->paginate(3)->withQueryString());
+        ->with('projects', Project::latest('published_date')->paginate(4)->withQueryString())   
+         ->with('mainProject', Project::where('title', 'Dice Game')->first());
+
 
     }
     
@@ -81,7 +86,9 @@ return redirect('/admin');
     public function edit(Project $project) {
         return view('admin.projects.create')
         ->with('project', $project)
-        ->with('categories', Category::all());
+        ->with('categories', Category::all())
+        ->with('tags', Tag::all());
+
     }
 
     public function update(Project $project, Request $request) {
@@ -102,11 +109,15 @@ return redirect('/admin');
 
         // Save updates to the DB
 // Save upload in public storage and set path attributes 
+if($request->file('image')){
 $image_path = $request->file('image')?->storeAs('images',$request->image->getClientOriginalName(), 'public');
 $attributes['image'] = $image_path;
+}
+if($request->file('thumb')){
+
 $thumb_path = $request->file('thumb')?->storeAs('images', $request->thumb->getClientOriginalName(), 'public');
 $attributes['thumb'] = $thumb_path;
-
+}
 $project->update($attributes);
 
 session()->flash('success','Project Updated Successfully');

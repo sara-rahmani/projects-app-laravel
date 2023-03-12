@@ -93,7 +93,7 @@
             @error('tags')
                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
             @enderror
-
+                </div>
             <div class="mb-6">
                 <label for="thumb" class="block mb-2 uppercase font-bold text-xs text-gray-700">Thumbnail</label>
                 <input type="file" name="thumb" id="thumb" value="{{ old('thumb') ?? $project?->thumb }}"
